@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body { position: relative; font-family: sans-serif; line-height: 1.3; color: #333333; min-height: 100%; box-sizing: border-box; }
+
+a { color: #333333; }
+
+a:hover { color: #333333; }
+
+a:active { color: #333333; }
+
+body { padding: 2em 0; background-position: center center; background-size: cover; background-attachment: fixed; -webkit-transition: background-color 0.3s; transition: background-color 0.3s; padding-bottom: 18%; }
+
+
+.logo { font-weight: 600; margin-bottom: 1.2em; font-size: 2em; -webkit-transition: color 0.3s; transition: color 0.3s; cursor: pointer; }
+.logo:after { position: relative; content: 'alpha'; color: #0084ff; font-weight: 100; font-size: 0.5em; vertical-align: super; left: 0.22em; font-family: serif; }
+.logo__s { position: relative; left: -0.02em; }
+
+
+.form-control, .form-control:focus  {
+    border: 0px solid white;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075); 
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    margin-bottom: 20px;
+}
+
+.header {
+    font-size: 300%;
+    color: #0084ff;
+    height: 110%;
+}
+
+.sign {
+    font-size: 200%;
+    height: 110%;
+}
+
+.article {
+    font-size: 150%;
+    height: 110%;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to bottom,#0084ff 0,#265a88 100%);
+}
