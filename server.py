@@ -1,5 +1,27 @@
-from flask import Flask, render_template, request
-from post_class import Posts, app, db
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+db = SQLAlchemy(app)
+
+
+class Posts(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(80))
+    author = db.Column(db.String(80))
+    post_text = db.Column(db.Text)
+
+    def __init__(self, title, author, post_text):
+        self.title = title
+        self.author = author
+        self.post_text = post_text
+
+    def __repr__(self):
+        return 'title={}, author={}, post_text={}, id={}'\
+            .format(self.title, self.author, self.post_text, self.id)
 
 
 
@@ -13,8 +35,7 @@ def make_a_post():
     header, sign, body = get_forms_content()
     print(header, sign, body)
     unique_id = add_post_in_db(header, sign, body)
-    # TODO доделать
-    return 'Success'
+    return redirect(unique_id, 301)
 
 
 def get_forms_content():
@@ -34,12 +55,10 @@ def add_post_in_db(header, sign, body):
 @app.route('/<call_id>', methods=['GET'])
 def show_article(call_id):
     post_info = Posts.query.filter_by(id=call_id).first()
-    print(post_info)
-    # print(post_info)
-    # return render_template('article.html', text=(poset, output_text))
-    return post_info
+    print(post_info.id)
+    return render_template('article.html', info=(post_info.title, post_info.author , post_info.post_text))
 
 
 if __name__ == "__main__":
     app.run()
-    show_article(1)
+
