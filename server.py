@@ -60,5 +60,5 @@ def show_article(call_id):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
