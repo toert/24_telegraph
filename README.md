@@ -1,7 +1,13 @@
-# Telegraph Clone
+﻿# Telegraph Clone
 
-{TODO. There will be project description}
+Данное приложение представляет собой упрощённый аналог известного сервиса создания анонимный статей telegraph.
 
-# Project Goals
+Любой пользователь может разместить свою статью и получить уникальный адрес в интернете.
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Посмотреть запущенный проект можно на сайте heroku. Статьи хранятся в базе данных sqlite. Авторизация пользователя проходит по cookies. В таком случае статьи можно редактировать.
+
+# Запуск
+
+	python server.py
+
+затем перейдите по ссылке 127.0.0.1:5000
