@@ -1,5 +1,5 @@
 from flask import request
-
+from model import Posts, db
 
 def get_forms_content():
     header = request.form['header']
