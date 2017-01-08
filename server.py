@@ -33,7 +33,6 @@ def render_form():
 @app.route('/', methods=['POST'])
 def make_a_post():
     header, sign, body = get_forms_content()
-    print(header, sign, body)
     unique_id = add_post_in_db(header, sign, body)
     return redirect(unique_id, 301)
 
@@ -55,7 +54,6 @@ def add_post_in_db(header, sign, body):
 @app.route('/<call_id>', methods=['GET'])
 def show_article(call_id):
     post_info = Posts.query.filter_by(id=call_id).first()
-    print(post_info.id)
     return render_template('article.html', info=(post_info.title, post_info.author , post_info.post_text))
 
 
