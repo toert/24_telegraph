@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, redirect, abort
 from model import db, Posts
 from helpers import get_forms_content, add_post_in_db
 
@@ -23,8 +22,10 @@ def make_a_post():
 
 @app.route('/<call_id>', methods=['GET'])
 def show_article(call_id):
-    post_info = Posts.query.filter_by(id=call_id).first()
-    return render_template('article.html', info=(post_info.title, post_info.author , post_info.post_text))
+    post_info = Posts.query.filter_by(id_log=call_id).first()
+    if post_info is None:
+        abort(404)
+    return render_template('article.html', info=post_info)
 
 
 if __name__ == "__main__":

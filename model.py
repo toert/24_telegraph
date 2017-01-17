@@ -1,5 +1,5 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from math import log
 
 
 db = SQLAlchemy()
@@ -7,6 +7,7 @@ db = SQLAlchemy()
 
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id_log = db.Column(db.Integer)
     title = db.Column(db.String(80))
     author = db.Column(db.String(80))
     post_text = db.Column(db.Text)
@@ -15,6 +16,10 @@ class Posts(db.Model):
         self.title = title
         self.author = author
         self.post_text = post_text
+
+    def init_id_log(self):
+        self.id_log = int((log(float(self.id)) * 10000))
+        return self.id_log
 
     def __repr__(self):
         return 'title={}, author={}, post_text={}, id={}'\
