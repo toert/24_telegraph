@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from math import log
 
 
+LOG_MULTIUPLY = 10000
 db = SQLAlchemy()
 
 
@@ -18,7 +19,7 @@ class Posts(db.Model):
         self.post_text = post_text
 
     def init_id_log(self):
-        self.id_log = int((log(float(self.id)) * 10000))
+        self.id_log = int((log(float(self.id)) * LOG_MULTIUPLY))
         return self.id_log
 
     def __repr__(self):

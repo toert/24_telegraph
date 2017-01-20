@@ -15,7 +15,7 @@ def add_post_in_db(header, sign, body):
     new_post = Posts(header, sign, body)
     db.session.add(new_post)
     db.session.commit()
-    new_post = Posts.query.filter_by(id=new_post.id).first() # returns yourself
+    new_post = Posts.query.filter_by(id=new_post.id).first()
     new_id_log = new_post.init_id_log()
     db.session.commit()
     return new_id_log
