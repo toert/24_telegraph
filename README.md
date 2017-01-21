@@ -13,3 +13,10 @@
 	python server.py
 
 затем перейдите по ссылке 127.0.0.1:5000
+
+# Для создания БД перед первым запуском выполнить:
+
+    from server import db, app
+    with app.app_context():
+        db.create_all()
+        
